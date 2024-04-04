@@ -1,0 +1,60 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class DynamicConfessionWithGFCheck {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("hi drix ");
+        String crushName = scanner.nextLine();
+        
+        String[] unexpectedMessages = {
+            "I know this might sound crazy, but...",
+            "You might find this a bit strange, but...",
+            "I want to say something.."
+        };
+        String[] quirkyConfessions = {
+            "super ganda ng smile moo hehe.",
+            "I love you tiktoks too",
+            "I hope you're doing fine always"
+        };
+        
+        Random rand = new Random();
+        
+        System.out.println("Do you have a girlfriend? (yes/no)");
+        String girlfriendResponse = scanner.nextLine();
+        
+        if (girlfriendResponse.equalsIgnoreCase("yes")) {
+            System.out.println("It's okay. Stay strong!");
+        } else if (girlfriendResponse.equalsIgnoreCase("no")) {
+            System.out.println("I hope we can try.");
+        } else {
+            System.out.println("Please answer with 'yes' or 'no'.");
+            scanner.close();
+            return;
+        }
+        
+        while (true) {
+            System.out.println("Do you want to hear a surprising message? (yes/no)");
+            String input = scanner.nextLine();
+            
+            if (input.equalsIgnoreCase("no")) {
+                System.out.println("Okay, maybe next time!");
+                break;
+            } else if (input.equalsIgnoreCase("yes")) {
+                int randomMessageIndex = rand.nextInt(unexpectedMessages.length);
+                int randomConfessionIndex = rand.nextInt(quirkyConfessions.length);
+                
+                String unexpectedMessage = unexpectedMessages[randomMessageIndex];
+                String quirkyConfession = quirkyConfessions[randomConfessionIndex];
+                
+                String confession = unexpectedMessage + " " + quirkyConfession + " I have feelings for you, " + crushName + ".";
+                System.out.println(confession);
+            } else {
+                System.out.println("Please answer with 'yes' or 'no'.");
+            }
+        }
+        
+        scanner.close();
+    }
+}
